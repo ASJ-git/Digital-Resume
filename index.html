@@ -1,9 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Digital Resume</title>
+    <title>Abrusu Sampson Junior | Digital Resume</title>
+    <meta
+      name="description"
+      content="Digital resume of Abrusu Sampson Junior, frontend developer."
+    />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Icons -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
@@ -11,99 +25,431 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <link />
-    <link rel="stylesheet" href="style.css" />
+
+    <!-- Dark-mode-before-paint, avoids flash -->
+    <script>
+      (function () {
+        var stored = localStorage.getItem('asj-theme');
+        var dark = stored ? stored === 'dark' : true;
+        document.documentElement.classList.toggle('dark', dark);
+      })();
+    </script>
+
+    <!-- Tailwind (Play CDN — no build step in this repo) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+              head: ['"Space Grotesk"', 'sans-serif'],
+              body: ['"IBM Plex Sans"', 'sans-serif'],
+            },
+            colors: {
+              ink: '#0f0f10',
+              ink2: '#17171a',
+              line: '#2a2a2e',
+              paper: '#f7f5f0',
+              paper2: '#ffffff',
+              linelight: '#e7e3d8',
+              accent: '#e8973a',
+              accentdark: '#c97a22',
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      html {
+        scroll-padding-top: 5.5rem;
+      }
+      ::selection {
+        background: #e8973a;
+        color: #0f0f10;
+      }
+
+      @media print {
+        .no-print {
+          display: none !important;
+        }
+        html,
+        body {
+          background: #fff !important;
+          color: #111 !important;
+        }
+        section {
+          break-inside: avoid;
+        }
+        a {
+          color: #111 !important;
+          text-decoration: underline !important;
+        }
+        .card,
+        .pill {
+          border: 1px solid #ccc !important;
+          box-shadow: none !important;
+          background: #fff !important;
+        }
+      }
+    </style>
   </head>
-  <body>
-    <div class="container">
-      <section class="section-a">
-        <div class="image"><img src="img/IMG_196 (1).jpg" alt="ASJ" /></div>
-        <div class="inner-text">
-          <h1>Abrusu Sampson Junior</h1>
-          <p>
-            I leverage my passion for computer science and problem-solving to
-            make a meaningful contribution to society, while continuously
-            growing through innovative academic and professional opportunities.
-          </p>
-          <a href="mailto:abrususam@gmail.com">👉abrususam@gmail.com</a>
+  <body
+    class="bg-paper text-[#1c1c1c] dark:bg-ink dark:text-[#ececec] font-body antialiased transition-colors duration-300"
+  >
+    <!-- ============ HEADER / NAV ============ -->
+    <header
+      class="site-header no-print sticky top-0 z-50 border-b border-linelight dark:border-line bg-paper/80 dark:bg-ink/80 backdrop-blur"
+    >
+      <div
+        class="mx-auto max-w-5xl px-5 h-16 flex items-center justify-between"
+      >
+        <a href="#top" class="font-head font-semibold tracking-tight text-lg">
+          ASJ
+        </a>
+
+        <nav class="hidden md:flex items-center gap-7 text-sm font-medium">
+          <a href="#about" class="nav-link">About</a>
+          <a href="#skills" class="nav-link">Skills</a>
+          <a href="#projects" class="nav-link">Projects</a>
+          <a href="#experience" class="nav-link">Experience</a>
+          <a href="#education" class="nav-link">Education</a>
+        </nav>
+
+        <div class="flex items-center gap-2">
+          <button
+            id="theme-toggle"
+            aria-label="Toggle dark mode"
+            class="grid place-items-center size-11 rounded-full border border-linelight dark:border-line hover:border-accent transition-colors"
+          >
+            <i class="fa-solid fa-sun hidden dark:block text-accent"></i>
+            <i class="fa-solid fa-moon block dark:hidden"></i>
+          </button>
+          <button
+            id="menu-toggle"
+            aria-label="Open menu"
+            class="md:hidden grid place-items-center size-11 rounded-full border border-linelight dark:border-line"
+          >
+            <i class="fa-solid fa-bars"></i>
+          </button>
+        </div>
+      </div>
+
+      <nav
+        id="mobile-menu"
+        class="hidden md:hidden border-t border-linelight dark:border-line px-5 py-3 flex flex-col gap-1 text-sm font-medium bg-paper dark:bg-ink"
+      >
+        <a href="#about" class="mobile-nav-link">About</a>
+        <a href="#skills" class="mobile-nav-link">Skills</a>
+        <a href="#projects" class="mobile-nav-link">Projects</a>
+        <a href="#experience" class="mobile-nav-link">Experience</a>
+        <a href="#education" class="mobile-nav-link">Education</a>
+      </nav>
+    </header>
+
+    <main id="top" class="mx-auto max-w-5xl px-5">
+      <!-- ============ HERO / HEADER CONTENT ============ -->
+      <section class="pt-16 pb-14 sm:pt-24 sm:pb-20">
+        <h1
+          class="font-head font-semibold text-4xl sm:text-6xl leading-[1.05] tracking-tight max-w-3xl"
+        >
+          Abrusu Sampson Junior
+        </h1>
+        <p
+          class="mt-5 max-w-xl text-base sm:text-lg text-[#4a4a46] dark:text-[#a3a3a8]"
+        >
+          Self-driven frontend developer shipping real, deployed products:
+          16+ live web apps built with React, JavaScript, Tailwind CSS and
+          Vite.
+        </p>
+
+        <div class="mt-8 flex flex-wrap items-center gap-3 text-sm">
+          <a href="mailto:abrususam@gmail.com" class="social-chip social-chip--solid">
+            <i class="fa-solid fa-envelope"></i> Email
+          </a>
+          <a
+            href="https://asjdeployed.netlify.app/"
+            target="_blank"
+            rel="noopener"
+            class="social-chip social-chip--outline"
+          >
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Portfolio
+          </a>
+          <a
+            href="https://github.com/ASJ-git"
+            target="_blank"
+            rel="noopener"
+            class="social-chip social-chip--outline"
+          >
+            <i class="fa-brands fa-github"></i> GitHub
+          </a>
+          <a
+            href="https://linkedin.com/in/abrusu-sampson-junior-001020344"
+            target="_blank"
+            rel="noopener"
+            class="social-chip social-chip--outline"
+          >
+            <i class="fa-brands fa-linkedin"></i> LinkedIn
+          </a>
         </div>
       </section>
-      <section class="section-b">
-        <div class="links">
-          <a
-            href="https://www.instagram.com/skam_gh?igsh=aWVpamt3N2g0eWN3"
-            target="_blank"
-            >Instagram</a
-          >
-          <a
-            href="https://x.com/AbrusuSamp42087?t=a-n3gyzLEtPlByJttKSYuQ&s=08"
-            target="_blank"
-            >X</a
-          >
-          <a
-            href="https://www.linkedin.com/in/abrusu-sampson-001020344?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
-            target="_blank"
-            >Linkedin</a
-          >
-          <a href="/img/RESUME.pdf" target="_blank">Download Resume</a>
+
+      <!-- ============ ABOUT ============ -->
+      <section id="about" class="py-14 sm:py-20 border-t border-linelight dark:border-line">
+        <h2 class="font-head text-2xl sm:text-3xl font-semibold mb-6">About</h2>
+        <p class="max-w-2xl text-base sm:text-lg leading-relaxed text-[#3a3a36] dark:text-[#c7c7cc]">
+          I'm a Computer Science undergraduate at KNUST and a self-driven
+          frontend developer with 16+ deployed web applications built using
+          React, JavaScript, Tailwind CSS, and Vite. I have a strong track
+          record of real-world project delivery, and I'm committed to clean
+          code, intuitive UI, and building digital solutions that actually
+          ship.
+        </p>
+      </section>
+
+      <!-- ============ SKILLS ============ -->
+      <section id="skills" class="py-14 sm:py-20 border-t border-linelight dark:border-line">
+        <h2 class="font-head text-2xl sm:text-3xl font-semibold mb-8">Skills</h2>
+
+        <div class="grid sm:grid-cols-2 gap-8">
+          <div>
+            <h3 class="font-head text-sm uppercase tracking-widest text-accent mb-3">Languages</h3>
+            <div class="flex flex-wrap gap-2">
+              <span class="pill">HTML</span>
+              <span class="pill">CSS</span>
+              <span class="pill">JavaScript</span>
+              <span class="pill">TypeScript</span>
+            </div>
+          </div>
+          <div>
+            <h3 class="font-head text-sm uppercase tracking-widest text-accent mb-3">Frameworks &amp; Libraries</h3>
+            <div class="flex flex-wrap gap-2">
+              <span class="pill">React</span>
+              <span class="pill">React Router</span>
+              <span class="pill">Tailwind CSS</span>
+              <span class="pill">Bootstrap</span>
+              <span class="pill">Sass</span>
+              <span class="pill">CSS Modules</span>
+              <span class="pill">Styled Components</span>
+            </div>
+          </div>
+          <div>
+            <h3 class="font-head text-sm uppercase tracking-widest text-accent mb-3">Tools</h3>
+            <div class="flex flex-wrap gap-2">
+              <span class="pill">Netlify</span>
+              <span class="pill">VS Code</span>
+              <span class="pill">GitLens</span>
+              <span class="pill">Vite</span>
+              <span class="pill">Git</span>
+              <span class="pill">GitHub</span>
+              <span class="pill">NPM</span>
+              <span class="pill">Figma</span>
+            </div>
+          </div>
+          <div>
+            <h3 class="font-head text-sm uppercase tracking-widest text-accent mb-3">APIs</h3>
+            <div class="flex flex-wrap gap-2">
+              <span class="pill">Open-Meteo</span>
+              <span class="pill">TMDB API</span>
+              <span class="pill">Appwrite</span>
+            </div>
+          </div>
+          <div class="sm:col-span-2">
+            <h3 class="font-head text-sm uppercase tracking-widest text-accent mb-3">Concepts</h3>
+            <div class="flex flex-wrap gap-2">
+              <span class="pill">API Security</span>
+              <span class="pill">Responsive UI</span>
+              <span class="pill">Debugging</span>
+              <span class="pill">LocalStorage</span>
+            </div>
+          </div>
         </div>
-        <div class="skills">
-          <h1>Skills & Qualifications</h1>
-          <ul>
-            <li>
-              <i class="fa fa-check"></i> 2 years exprience with frontend
-              development
-            </li>
-            <li><i class="fa fa-check"></i> Extensive knowledge in API</li>
-            <li>
-              <i class="fa fa-check"></i> Problem-solving and critical thinking
-            </li>
-            <li><i class="fa fa-check"></i> Collaboration and teamwork</li>
-            <li><i class="fa fa-check"></i> Leadership and adaptability</li>
+      </section>
+
+      <!-- ============ PROJECTS ============ -->
+      <section id="projects" class="py-14 sm:py-20 border-t border-linelight dark:border-line">
+        <h2 class="font-head text-2xl sm:text-3xl font-semibold mb-8">Projects</h2>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          <!-- Deployed by ASJ -->
+          <article class="card">
+            <h3 class="font-head text-lg font-semibold mb-2">Deployed by ASJ</h3>
+            <p class="text-sm text-[#4a4a46] dark:text-[#a3a3a8] mb-4">
+              A curated portfolio of 16+ live, deployed solutions, built from
+              the ground up and engineered to make an impact.
+            </p>
+            <div class="flex flex-wrap gap-1.5 mb-5">
+              <span class="tag">React</span>
+              <span class="tag">Tailwind CSS</span>
+              <span class="tag">Vite</span>
+              <span class="tag">Netlify</span>
+            </div>
+            <div class="mt-auto flex gap-2 text-sm">
+              <a
+                href="https://asjdeployed.netlify.app/"
+                target="_blank"
+                rel="noopener"
+                class="btn-primary"
+                >Live Demo</a
+              >
+            </div>
+          </article>
+
+          <!-- Movie App -->
+          <article class="card">
+            <h3 class="font-head text-lg font-semibold mb-2">Movie App</h3>
+            <p class="text-sm text-[#4a4a46] dark:text-[#a3a3a8] mb-4">
+              Film discovery app with real-time search and a live "top 5
+              searched" tracking algorithm, powered by the TMDB API.
+            </p>
+            <div class="flex flex-wrap gap-1.5 mb-5">
+              <span class="tag">React</span>
+              <span class="tag">TMDB API</span>
+              <span class="tag">Appwrite</span>
+              <span class="tag">Tailwind CSS</span>
+            </div>
+            <div class="mt-auto flex gap-2 text-sm">
+              <a
+                href="https://asjmovieapp.netlify.app/"
+                target="_blank"
+                rel="noopener"
+                class="btn-primary"
+                >Live Demo</a
+              >
+            </div>
+          </article>
+
+          <!-- Mind Matters -->
+          <article class="card">
+            <h3 class="font-head text-lg font-semibold mb-2">Mind Matters</h3>
+            <p class="text-sm text-[#4a4a46] dark:text-[#a3a3a8] mb-4">
+              A student-led Mental Health Awareness Initiative for Mastercard
+              Foundation Scholars at KNUST, with email subscription updates.
+            </p>
+            <div class="flex flex-wrap gap-1.5 mb-5">
+              <span class="tag">HTML</span>
+              <span class="tag">CSS</span>
+              <span class="tag">JavaScript</span>
+            </div>
+            <div class="mt-auto flex gap-2 text-sm">
+              <a
+                href="https://ilfmindmatters.netlify.app"
+                target="_blank"
+                rel="noopener"
+                class="btn-primary"
+                >Live Demo</a
+              >
+            </div>
+          </article>
+        </div>
+        <p class="mt-5 text-xs text-[#8a8a86] dark:text-[#6f6f75]">
+          GitHub repo links aren't wired up yet. Send them over and I'll add "View Code" buttons to each card.
+        </p>
+      </section>
+
+      <!-- ============ EXPERIENCE ============ -->
+      <section id="experience" class="py-14 sm:py-20 border-t border-linelight dark:border-line">
+        <h2 class="font-head text-2xl sm:text-3xl font-semibold mb-8">Experience</h2>
+
+        <div class="relative pl-6 border-l-2 border-linelight dark:border-line">
+          <div class="absolute -left-[9px] top-1 size-4 rounded-full bg-accent"></div>
+          <p class="text-xs uppercase tracking-widest text-accent font-head mb-1">2023 – Present</p>
+          <h3 class="font-head text-xl font-semibold">Freelance Frontend Developer</h3>
+          <p class="text-sm text-[#4a4a46] dark:text-[#a3a3a8] mb-4">Self-Employed</p>
+          <ul class="space-y-2.5 text-sm sm:text-base text-[#3a3a36] dark:text-[#c7c7cc] max-w-2xl">
+            <li class="check-item"><i class="fa-solid fa-check"></i><span>Designed and developed 16+ responsive, user-friendly web applications from scratch using HTML, CSS, JavaScript, React, and Tailwind CSS.</span></li>
+            <li class="check-item"><i class="fa-solid fa-check"></i><span>Built a full-featured Movie Discovery App with real-time search, a smart algorithm tracking the 5 most searched movies, and seamless TMDB API integration.</span></li>
+            <li class="check-item"><i class="fa-solid fa-check"></i><span>Developed an interactive Number Guessing Game with real-time feedback, score tracking, and localStorage-based persistence.</span></li>
+            <li class="check-item"><i class="fa-solid fa-check"></i><span>Managed project deployment on Netlify and Vercel, ensuring all applications are live, fast, and production-ready.</span></li>
+            <li class="check-item"><i class="fa-solid fa-check"></i><span>Built and maintained a curated portfolio site (asjdeployed.netlify.app) showcasing all deployed projects.</span></li>
           </ul>
         </div>
       </section>
-      <section class="section-c">
-        <h1>Tech Stack</h1>
-        <div class="inner">
-          <p>HTML, CSS, JavaScript, Python</p>
-          <p>Tailwind, Bootstrap, React</p>
-          <p>Sass</p>
-        </div>
-        <h1>Work History</h1>
-        <div class="works">
-          <div>
-            <h3>Google</h3>
-            <ul>
-              <li>1 year at Google as an intern</li>
-              <li>
-                20+ websites built with a small team of developers and
-                freelancers
-              </li>
-            </ul>
-          </div>
-          <div>
-            <h3>Amazon</h3>
-            <ul>
-              <li>1 year at Amazon as an intern</li>
-              <li>
-                20+ websites built with a small team of developers and
-                freelancers
-              </li>
-            </ul>
-          </div>
+
+      <!-- ============ EDUCATION ============ -->
+      <section id="education" class="py-14 sm:py-20 border-t border-linelight dark:border-line">
+        <h2 class="font-head text-2xl sm:text-3xl font-semibold mb-8">Education</h2>
+        <div class="max-w-2xl">
+          <h3 class="font-head text-xl font-semibold">BSc. Computer Science</h3>
+          <p class="text-[#4a4a46] dark:text-[#a3a3a8] mt-1">
+            Kwame Nkrumah University of Science and Technology (KNUST),
+            Kumasi, Ashanti Region, Ghana
+          </p>
         </div>
       </section>
-      <section class="section-d">
-        <h1>Projects & Accomplishments</h1>
-        <div class="projects">
-          <p>🏆 Completion of 20 projects in a 6 months</p>
-          <p>🏆 Built a number guessing game</p>
-          <p>🏆 Designed and built a Dictionary use API</p>
-          <p>🏆 Designed and built a Calculator</p>
-          <p>🏆 Designed and built a Quiz applcation</p>
+    </main>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="border-t border-linelight dark:border-line mt-10">
+      <div class="mx-auto max-w-5xl px-5 py-10 flex flex-col sm:flex-row items-center justify-between gap-5">
+        <p class="text-sm text-[#6f6f6a] dark:text-[#77777c]">
+          &copy; 2024 Abrusu Sampson Junior. All rights reserved.
+        </p>
+        <div class="flex items-center gap-4 text-sm">
+          <a href="mailto:abrususam@gmail.com" class="nav-link">Email</a>
+          <a href="https://asjdeployed.netlify.app/" target="_blank" rel="noopener" class="nav-link">Portfolio</a>
+          <a href="https://github.com/ASJ-git" target="_blank" rel="noopener" class="nav-link">GitHub</a>
+          <a href="https://linkedin.com/in/abrusu-sampson-junior-001020344" target="_blank" rel="noopener" class="nav-link">LinkedIn</a>
         </div>
-      </section>
-    </div>
+      </div>
+    </footer>
+
+    <script>
+      // Theme toggle
+      var themeBtn = document.getElementById('theme-toggle');
+      themeBtn.addEventListener('click', function () {
+        var isDark = document.documentElement.classList.toggle('dark');
+        localStorage.setItem('asj-theme', isDark ? 'dark' : 'light');
+      });
+
+      // Mobile menu toggle
+      var menuBtn = document.getElementById('menu-toggle');
+      var mobileMenu = document.getElementById('mobile-menu');
+      menuBtn.addEventListener('click', function () {
+        mobileMenu.classList.toggle('hidden');
+      });
+      mobileMenu.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', function () {
+          mobileMenu.classList.add('hidden');
+        });
+      });
+    </script>
+
+    <style type="text/tailwindcss">
+      .pill {
+        @apply text-sm px-3 py-1.5 rounded-full border border-linelight dark:border-line bg-paper2 dark:bg-ink2;
+      }
+      .card {
+        @apply flex flex-col rounded-2xl border border-linelight dark:border-line bg-paper2 dark:bg-ink2 p-5 cursor-pointer transition-all duration-200 hover:-translate-y-1 hover:shadow-lg hover:border-accent;
+      }
+      .tag {
+        @apply text-xs px-2.5 py-1 rounded-full bg-paper dark:bg-ink text-[#5a5a55] dark:text-[#9a9a9f] border border-linelight dark:border-line;
+      }
+      .btn-primary {
+        @apply inline-flex items-center gap-1.5 rounded-full bg-accent text-ink px-3.5 py-2.5 font-medium hover:bg-accentdark transition-colors;
+      }
+      .nav-link {
+        @apply hover:text-accent transition-colors;
+      }
+      .mobile-nav-link {
+        @apply py-3 hover:text-accent transition-colors;
+      }
+      .social-chip {
+        @apply inline-flex items-center gap-2 rounded-full px-4 py-2.5 font-medium transition-colors;
+      }
+      .social-chip--solid {
+        @apply bg-accent text-ink hover:bg-accentdark;
+      }
+      .social-chip--outline {
+        @apply border border-linelight dark:border-line hover:border-accent hover:text-accent;
+      }
+      .check-item {
+        @apply flex gap-2;
+      }
+      .check-item i {
+        @apply text-accent mt-1.5 text-xs;
+      }
+    </style>
   </body>
 </html>
